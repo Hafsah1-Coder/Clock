@@ -1,3 +1,7 @@
+let is24Hour = True
+let hours = now.getHours();
+if (!is24Hour) hours = hours % 12 || 12;
+
 const WEEK = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 
 function zeroPadding(num, digit) {

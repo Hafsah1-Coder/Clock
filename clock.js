@@ -12,15 +12,15 @@ function updateTime() {
   const timeEl = document.getElementById("time");
   const dateEl = document.getElementById("date");
   if (!timeEl || !dateEl) return;
+  
+  let hours24 = now.getHours();
+  let ampm = hours24 >= 12 ? "PM" : "AM";
+  let hours12 = hours24 % 12 || 12;
 
-  let hours = now.getHours();
-  if (!is24Hour) hours = hours % 12 || 12;
-
-  timeEl.innerText =
-    zeroPadding(hours, 2) + ":" +
-    zeroPadding(now.getMinutes(), 2) + ":" +
-    zeroPadding(now.getSeconds(), 2);
-
+timeEl.innerText =
+  zeroPadding(hours12, 2) + ":" +
+  zeroPadding(now.getMinutes(), 2) + ":" +
+  zeroPadding(now.getSeconds(), 2) + " " + ampm;
   dateEl.innerText =
     now.getFullYear() + "-" +
     zeroPadding(now.getMonth() + 1, 2) + "-" +
